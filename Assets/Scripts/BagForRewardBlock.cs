@@ -36,7 +36,7 @@ public class BagForRewardBlock : MonoBehaviour
     {
         if(other.TryGetComponent(out Stock stock))
         {
-            if (_isHandOver == false)
+            if (_isHandOver == false && _currentNumbBlocks > 0)
             {
                 StartCoroutine(HandOver(stock));
             }
@@ -57,6 +57,7 @@ public class BagForRewardBlock : MonoBehaviour
             _currentNumbBlocks--;
             UpdateBlockCount.Invoke();
         }
+        _currentNumbBlocks = 0;
         _isHandOver = false;
     }
 
